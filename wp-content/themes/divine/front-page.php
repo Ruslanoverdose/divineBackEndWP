@@ -1,7 +1,5 @@
 <?php get_header(); ?>
-<?
-    query_posts('post_type=ourworks');
-?>
+
         <section id="header">
             <div class="container">
                 <div class="row">
@@ -28,6 +26,9 @@
                 </a>
             </div>
         </section>
+<?
+    query_posts('post_type=services&order=ASC');
+?>
         <section id="services" class="bgLight pd70">
             <div class="container">
                 <div class="title text-center">
@@ -36,63 +37,29 @@
                     </h1>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4">
+                <? while (have_posts()) : the_post();?>
+                    <div class="col-md-4">
                         <div class="service">
-                            <a href="">
-                                <div class="service__block">
-                                    <div class="service__icon">
-                                        <img src="<?=get_template_directory_uri()?>/img/icons/dev.png" alt="">
-                                    </div> 
-                                    <div class="service__title">
-                                        <h3>Разработа сайтов</h3>
-                                    </div>
-                                    <div class="service__text">
-                                        Создание корпоративных сайтов, интернет-магазинов, промо-сайтов и сайтов небольших компаний.
-                                    </div> 
+                            <div class="service__block">
+                                <div class="service__icon">
+                                    <? the_post_thumbnail()  ?>
+                                </div> 
+                                <div class="service__title">
+                                    <h3><? the_title(); ?></h3>
                                 </div>
-                            </a>
-                            
+                                <div class="service__text">
+                                    <? the_excerpt(); ?>
+                                </div> 
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="service">
-                            <a href="">
-                                <div class="service__block">
-                                    <div class="service__icon">
-                                        <img src="<?=get_template_directory_uri()?>/img/icons/startup.png" alt="">
-                                    </div>
-                                    <div class="service__title">
-                                        <h3>Продвижение сайтов</h3>
-                                    </div>
-                                    <div class="service__text">
-                                        Комплексное продвижение сайтов в digital пространстве. SEO технологии, поддержка сервисов Google и Яндекс.
-                                    </div>
-                                </div>
-                            </a>
-                            
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="service">
-                            <a href="">
-                                <div class="service__block">
-                                    <div class="service__icon">
-                                        <img src="<?=get_template_directory_uri()?>/img/icons/paint.png" alt="">
-                                    </div>
-                                    <div class="service__title">
-                                        <h3>Дизайн</h3>
-                                    </div>
-                                    <div class="service__text">
-                                        Интерактивный дизайн, дизайн wow-эффектов, брендбука - фирменного стиля и логотипа компании
-                                    </div>
-                                </div>
-                            </a>
-                            
-                        </div>
-                    </div>
+                <? endwhile; ?>
                 </div>
             </div>
         </section>
+<?
+    query_posts('post_type=ourworks');
+?>
         <section id="portfolio" class="pd70 background2">
             <div class="container">
                 <div class="title">
@@ -123,79 +90,32 @@
                 </div>
             </div>
         </section>
+<?
+    query_posts('post_type=features&order=ASC');
+?>
         <section id="features" class="pd70 background3">
             <div class="container">
                 <div class="features-block">
+                <? while (have_posts()) : the_post();?>
                         <div class="feature">
                             <div class="feature__icon">
-                                <img src="<?=get_template_directory_uri()?>/img/icons/time.png" alt="">
+                                <? the_post_thumbnail()  ?>
                             </div>
                             <div class="feature__title">
-                                Сроки
+                                <? the_title();?>
                             </div>
                             <div class="feature__desc">
-                                Мы всегда предоставляем клиенту реальную оценку сроков и строго следим за её выполнением.
+                           <? the_excerpt(); ?>
                             </div>
                         </div>
-                        <div class="feature">
-                            <div class="feature__icon">
-                                <img src="<?=get_template_directory_uri()?>/img/icons/smartphone.png" alt="">
-                            </div>
-                            <div class="feature__title">
-                                Мобильный дизайн
-                            </div>
-                            <div class="feature__desc">
-                                Используем адаптивный дизайн и мобильные технологии, для того чтобы сайты отлично смотрелись на различных устройствах.
-                            </div>
-                        </div>
-                        <div class="feature">
-                            <div class="feature__icon">
-                                <img src="<?=get_template_directory_uri()?>/img/icons/megaphone.png" alt="">
-                            </div>
-                            <div class="feature__title">
-                                SEO ready
-                            </div>
-                            <div class="feature__desc">
-                                Мы изначально оптимизируем сайты, используя SEO технологии, подготавливая новый сайт к продвижению.
-                            </div>
-                        </div>
-                        <div class="feature">
-                            <div class="feature__icon">
-                                <img src="<?=get_template_directory_uri()?>/img/icons/brush.png" alt="">
-                            </div>
-                            <div class="feature__title">
-                                Дизайн
-                            </div>
-                            <div class="feature__desc">
-                                Используем только оригинальный платный контент - шрифты, картинки, темы и модули.
-                            </div>
-                        </div>
-                        <div class="feature">
-                            <div class="feature__icon">
-                                <img src="<?=get_template_directory_uri()?>/img/icons/network.png" alt="">
-                            </div>
-                            <div class="feature__title">
-                                Комплексная работа
-                            </div>
-                            <div class="feature__desc">
-                                Проводим рекламные кампании, ведем аккаунты во всех сервисах и социальных сетях, разрабатываем сайты и дизайн под ключ.
-                            </div>
-                        </div>
-                        <div class="feature">
-                            <div class="feature__icon">
-                                <img src="<?=get_template_directory_uri()?>/img/icons/customer-support.png" alt="">
-                            </div>
-                            <div class="feature__title">
-                                Гарантийная поддержка
-                            </div>
-                            <div class="feature__desc">
-                                Мы оказываем гарантийное и послегарантийное обслуживание проектов наших клиентов.
-                            </div>
-                        </div>
+                <? endwhile; ?>
                 </div>
                 
             </div>
         </section>
+<?
+    query_posts('post_type=steps&order=ASC');
+?>
         <section id="process">
             <div class="columns">
                 <div class="columns__column bgLight pd70">
@@ -208,13 +128,11 @@
                 <div class="columns__column pd70">
                     <div class="column-content">
                         <ol>
-                            <li><span>Обсуждение проекта</span></li>
-                            <li><span>Анализ Вашей ниши</span></li>
-                            <li><span>50% оплаты</span></li>
-                            <li><span>Работа</span></li>
-                            <li><span>Запуск</span></li>
-                            <li><span>50% оплаты</span></li>
+                        <? while (have_posts()) : the_post();?>
+                            <li><span><?the_title();?></span></li>
+                        <? endwhile; ?>
                         </ol>
+                        
                     </div>
                     
                 </div>
@@ -226,31 +144,7 @@
                     <h1>Контакты</h1>
                 </div>
                 <div class="contactBlock">
-                    <form action="">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="field">
-                                    <input type="text" placeholder="Ваше имя">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="field">
-                                    <input type="text" placeholder="Email">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="field">
-                            <input type="text" placeholder="Тема">
-                        </div>
-                        <div class="field">
-                            <textarea name="" id="" placeholder="Ваще сообщение"></textarea>
-                        </div>
-                        <div class="field">
-                            <button class="customButton">
-                                Отправить
-                            </button>
-                        </div>
-                    </form>
+                    <? echo do_shortcode('[contact-form-7 id="50" title="Обратная связь"]');?>
                 </div>
             </div>
         </section>

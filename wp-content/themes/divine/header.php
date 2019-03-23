@@ -20,7 +20,7 @@
 		<?php wp_head(); ?>
 	</head>
 
-	<body>
+	<body id="body">
 
 	<div class="wrapper">
         <section id="navigation" class="mainPageNav navStart navFixed">
